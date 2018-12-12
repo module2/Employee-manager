@@ -54,11 +54,6 @@ public class EmployeeController {
             return new ModelAndView("views/create");
         } else {
             employeeService.save(employee);
-            if (gender.equals("0")) {
-                employee.setGender("male");
-            } else {
-                employee.setGender("female");
-            }
         }
         ModelAndView modelAndView = new ModelAndView("views/create", "employee", new Employee());
         modelAndView.addObject("message", "Created a Employee Successfully!");

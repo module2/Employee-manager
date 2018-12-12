@@ -12,17 +12,6 @@ public class GroupEmployee {
     private Integer id;
     private String name;
 
-    @OneToMany(targetEntity = Employee.class)
-    private List<Employee> employees;
-
-    public List<Employee> getEmployees() {
-        return employees;
-    }
-
-    public void setEmployees(List<Employee> employees) {
-        this.employees = employees;
-    }
-
     public GroupEmployee() {
     }
 

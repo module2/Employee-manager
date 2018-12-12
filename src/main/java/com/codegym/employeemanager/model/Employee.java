@@ -1,5 +1,6 @@
 package com.codegym.employeemanager.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.validation.annotation.Validated;
 
 import javax.persistence.*;
@@ -8,6 +9,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.xml.ws.soap.Addressing;
+import java.util.Date;
 
 @Entity
 @Table(name = "employee")
@@ -21,23 +23,26 @@ public class Employee {
     @NotBlank(message = "name is not blank")
     private String name;
 
-    @Pattern(regexp = "[0-1]", message = "0-male, 1-female")
     private String gender;
 
-    @Pattern(regexp = "[0-9]{2}/[0-9]{2}/[0-9]{2}", message = "datetime example: dd/MM/yy")
-    private String day_of_birth;
+    @NotNull(message = "day of birth is not blank")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date day_of_birth;
 
     @Pattern(regexp = "[0-9]{10}", message = "Phone number have 10 numbers")
     private String phone_number;
 
+    @NotBlank(message = "idcard is not blank")
     private String idcard;
 
+    @NotBlank(message = "email is not blank")
     @Email(message = "email example: abc@gmail.com")
     private String email;
 
+    @NotBlank(message = "address is not blank")
     private String address;
 
-    @ManyToOne
+    @ManyToOne(targetEntity = GroupEmployee.class)
     @JoinColumn(name = "group_id")
     private GroupEmployee groupEmployee;
 
@@ -76,11 +81,11 @@ public class Employee {
         this.gender = gender;
     }
 
-    public String getDay_of_birth() {
+    public Date getDay_of_birth() {
         return day_of_birth;
     }
 
-    public void setDay_of_birth(String day_of_birth) {
+    public void setDay_of_birth(Date day_of_birth) {
         this.day_of_birth = day_of_birth;
     }
 

@@ -16,7 +16,7 @@
             <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name error</td>
         </tr>
         <tr>
-            <td>Name</td>
+            <td>Group</td>
             <td><select th:field="*{groupEmployee}">
                 <option th:each="g :${groupEmployees}" th:value="${g.id}" th:text="${g.name}"></option>
             </select></td>
@@ -29,8 +29,9 @@
         </tr>
         <tr>
             <td>Gender</td>
-            <td><input type="text" th:field="*{gender}"></td>
-            <td th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}">Gender error</td>
+            <td><input type="radio" th:field="*{gender}" value="male" checked>Male
+                <input type="radio" th:field="*{gender}" value="female">Female
+                <input type="radio" th:field="*{gender}" value="gay">Gay</td>
         </tr>
         <tr>
             <td>Phone number</td>
@@ -40,6 +41,7 @@
         <tr>
             <td>Id card</td>
             <td><input type="text" th:field="*{idcard}"></td>
+            <td th:if="${#fields.hasErrors('idcard')}" th:errors="*{idcard}">idcard error</td>
         </tr>
         <tr>
             <td>Email</td>
@@ -49,6 +51,7 @@
         <tr>
             <td>Address</td>
             <td><input type="text" th:field="*{address}"></td>
+            <td th:if="${#fields.hasErrors('address')}" th:errors="*{address}">address error</td>
         </tr>
         <tr>
             <td></td>
